@@ -58,16 +58,10 @@ public class AlunoController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/{alunoId}")
-    public ResponseEntity<Aluno> encontrarPorId(@PathVariable Long alunoId, HttpServletResponse response) {
-        Optional<Aluno> aluno = repository.findById(alunoId);
-
-        if (aluno.isPresent()) {
-            return ResponseEntity.ok(aluno.get());
-        } else {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping("/{id}")
+    public ResponseEntity pesquisar(@PathVariable Long id) {
+        var aluno = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoAluno(aluno));
     }
 
 

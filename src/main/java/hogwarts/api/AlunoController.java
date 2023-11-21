@@ -10,10 +10,10 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/alunos")
@@ -24,26 +24,38 @@ public class AlunoController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid DadosCadastroAluno dados){
-        repository.save(new Aluno(dados));
+    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroAluno dados, UriComponentsBuilder uriBuilder){
+        var aluno = new Aluno(dados);
+        repository.save(aluno);
+        
+        var uri = uriBuilder.path("/alunos/{id}").buildAndExpand(aluno.getId()).toUri();
+        
+        return ResponseEntity.created(uri).body(new DadosDetalhamentoAluno(aluno));
+        
+        
     }
 
     @GetMapping
-    public Page<DadosListagemAluno> listar(@PageableDefault(size = 2, sort = {"bruxo"}) Pageable paginacao){
-        return repository.findAll(paginacao).map(DadosListagemAluno::new);
+    public ResponseEntity<Page<DadosListagemAluno>> listar(@PageableDefault(size = 2, sort = {"bruxo"}) Pageable paginacao){
+        var page = repository.findAll(paginacao).map(DadosListagemAluno::new);
+        return ResponseEntity.ok(page);
     }
 
     @PutMapping
     @Transactional
-    public void atualizar(@RequestBody @Valid DadosAtualizacaoAluno dados){
+    public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoAluno dados){
         var aluno = repository.getReferenceById(dados.id());
         aluno.atualizarInformacoes(dados);
+        
+        return ResponseEntity.ok(new DadosDetalhamentoAluno(aluno));
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void excluir(@PathVariable Long id){
+    public ResponseEntity excluir(@PathVariable Long id){
+
         repository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{alunoId}")

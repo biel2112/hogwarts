@@ -44,6 +44,7 @@ public class FuncionarioController {
     }
 
 
+
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity excluir(@PathVariable Long id){

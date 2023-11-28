@@ -43,6 +43,7 @@ public class FuncionarioController {
         return ResponseEntity.ok(new DadosDetalhamentoFuncionario(funcionario));
     }
 
+
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity excluir(@PathVariable Long id){

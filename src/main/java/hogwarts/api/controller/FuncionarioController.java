@@ -1,5 +1,6 @@
-package hogwarts.api.domain.funcionario;
+package hogwarts.api.controller;
 
+import hogwarts.api.domain.funcionario.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -42,9 +43,6 @@ public class FuncionarioController {
 
         return ResponseEntity.ok(new DadosDetalhamentoFuncionario(funcionario));
     }
-
-
-
 
     @DeleteMapping("/{id}")
     @Transactional

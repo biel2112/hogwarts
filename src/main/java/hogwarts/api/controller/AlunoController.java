@@ -1,5 +1,6 @@
-package hogwarts.api.domain.aluno;
+package hogwarts.api.controller;
 
+import hogwarts.api.domain.aluno.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

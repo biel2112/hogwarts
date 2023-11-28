@@ -1,6 +1,6 @@
-package hogwarts.api.funcionario;
+package hogwarts.api.domain.funcionario;
 
-import hogwarts.api.bruxo.Bruxo;
+import hogwarts.api.domain.bruxo.Bruxo;
 
 public record DadosListagemFuncionario(Long id, Bruxo bruxo, Cargo cargo, String transformacao, String materia) {
 

@@ -1,7 +1,7 @@
-package hogwarts.api.aluno;
+package hogwarts.api.domain.aluno;
 
-import hogwarts.api.bruxo.DadosBruxo;
-import hogwarts.api.endereco.DadosEndereco;
+import hogwarts.api.domain.bruxo.DadosBruxo;
+import hogwarts.api.domain.endereco.DadosEndereco;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

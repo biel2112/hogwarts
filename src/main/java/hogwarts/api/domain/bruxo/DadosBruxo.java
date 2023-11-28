@@ -1,4 +1,4 @@
-package hogwarts.api.bruxo;
+package hogwarts.api.domain.bruxo;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

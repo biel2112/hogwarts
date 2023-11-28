@@ -1,7 +1,7 @@
-package hogwarts.api.aluno;
+package hogwarts.api.domain.aluno;
 
-import hogwarts.api.bruxo.Bruxo;
-import hogwarts.api.endereco.Endereco;
+import hogwarts.api.domain.bruxo.Bruxo;
+import hogwarts.api.domain.endereco.Endereco;
 
 public record DadosDetalhamentoAluno(Long id, Casa casa, Status status, Integer ano, String mascote, Bruxo bruxo, Endereco endereco) {
     

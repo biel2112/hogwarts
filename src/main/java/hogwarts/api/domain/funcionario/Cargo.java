@@ -1,4 +1,4 @@
-package hogwarts.api.funcionario;
+package hogwarts.api.domain.funcionario;
 
 public enum Cargo {
 

@@ -1,4 +1,4 @@
-package hogwarts.api.funcionario;
+package hogwarts.api.domain.funcionario;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

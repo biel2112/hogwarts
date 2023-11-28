@@ -1,6 +1,6 @@
-package hogwarts.api.aluno;
+package hogwarts.api.domain.aluno;
 
-import hogwarts.api.bruxo.Bruxo;
+import hogwarts.api.domain.bruxo.Bruxo;
 
 public record DadosListagemAluno(Long id, Bruxo bruxo, Casa casa, Integer ano, Status status) {
 

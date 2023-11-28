@@ -1,4 +1,4 @@
-package hogwarts.api.bruxo;
+package hogwarts.api.domain.bruxo;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

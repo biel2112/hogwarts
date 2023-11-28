@@ -1,8 +1,7 @@
-package hogwarts.api.funcionario;
+package hogwarts.api.domain.funcionario;
 
-import hogwarts.api.bruxo.DadosBruxo;
-import hogwarts.api.endereco.DadosEndereco;
-import jakarta.validation.Valid;
+import hogwarts.api.domain.bruxo.DadosBruxo;
+import hogwarts.api.domain.endereco.DadosEndereco;
 import jakarta.validation.constraints.NotNull;
 
 public record DadosAtualizacaoFuncionario(

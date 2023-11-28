@@ -1,4 +1,4 @@
-package hogwarts.api.aluno;
+package hogwarts.api.domain.aluno;
 
 public enum Status {
 

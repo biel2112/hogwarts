@@ -1,4 +1,4 @@
-package hogwarts.api.endereco;
+package hogwarts.api.domain.endereco;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

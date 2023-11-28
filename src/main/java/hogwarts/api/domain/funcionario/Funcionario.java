@@ -1,7 +1,7 @@
-package hogwarts.api.funcionario;
+package hogwarts.api.domain.funcionario;
 
-import hogwarts.api.bruxo.Bruxo;
-import hogwarts.api.endereco.Endereco;
+import hogwarts.api.domain.bruxo.Bruxo;
+import hogwarts.api.domain.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

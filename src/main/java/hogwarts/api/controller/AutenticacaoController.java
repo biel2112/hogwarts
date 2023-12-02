@@ -1,6 +1,9 @@
 package hogwarts.api.controller;
 
 import hogwarts.api.domain.usuario.DadosAutenticacao;
+import hogwarts.api.domain.usuario.Usuario;
+import hogwarts.api.infra.security.DadosTokenJWT;
+import hogwarts.api.infra.security.TokenService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +23,16 @@ public class AutenticacaoController {
     @Autowired
     private AuthenticationManager manager;
 
+    @Autowired
+    private TokenService tkService;
+
     @PostMapping
     public ResponseEntity efetuarLogin(@RequestBody @Valid DadosAutenticacao dados){
-        var token = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
-        var authentication = manager.authenticate(token);
+        var authToken = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
+        var authentication = manager.authenticate(authToken);
 
-        return ResponseEntity.ok().build();
+        var tokenJWT = tkService.gerarToken((Usuario) authentication.getPrincipal());
+
+        return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
     }
 }

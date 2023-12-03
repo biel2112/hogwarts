@@ -1,5 +1,6 @@
 package hogwarts.api.controller;
 
+import hogwarts.api.domain.aluno.DadosDetalhamentoAluno;
 import hogwarts.api.domain.funcionario.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +53,8 @@ public class FuncionarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity pesquisar(@RequestBody Long id){
+    public ResponseEntity pesquisar(@PathVariable Long id) {
         var funcionario = repository.getReferenceById(id);
-
         return ResponseEntity.ok(new DadosDetalhamentoFuncionario(funcionario));
     }
 }

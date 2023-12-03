@@ -1,0 +1,1 @@
+ALTER TABLE funcionarios DROP COLUMN logradouro, DROP COLUMN complemento, DROP COLUMN pais, DROP COLUMN cidade;

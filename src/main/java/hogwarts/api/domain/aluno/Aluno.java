@@ -1,7 +1,6 @@
 package hogwarts.api.domain.aluno;
 
 import hogwarts.api.domain.bruxo.Bruxo;
-import hogwarts.api.domain.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -25,12 +24,9 @@ public class Aluno {
     private String mascote;
     @Embedded
     private Bruxo bruxo;
-    @Embedded
-    private Endereco endereco;
 
     public Aluno(DadosCadastroAluno dados) {
         this.bruxo = new Bruxo(dados.bruxo());
-        this.endereco = new Endereco(dados.endereco());
         this.casa = dados.casa();
         this.status = dados.status();
         this.ano = dados.ano();
@@ -40,9 +36,6 @@ public class Aluno {
     public void atualizarInformacoes(DadosAtualizacaoAluno dados) {
         if(dados.bruxo() != null){
             this.bruxo.atualizarInformacoes(dados.bruxo());
-        }
-        if(dados.endereco() != null){
-            this.endereco.atualizarInformacoes(dados.endereco());
         }
         if(dados.status() != null){
             this.status = dados.status();

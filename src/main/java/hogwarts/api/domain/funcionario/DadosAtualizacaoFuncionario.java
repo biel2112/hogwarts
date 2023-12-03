@@ -1,7 +1,6 @@
 package hogwarts.api.domain.funcionario;
 
 import hogwarts.api.domain.bruxo.DadosBruxo;
-import hogwarts.api.domain.endereco.DadosEndereco;
 import jakarta.validation.constraints.NotNull;
 
 public record DadosAtualizacaoFuncionario(
@@ -10,7 +9,6 @@ public record DadosAtualizacaoFuncionario(
         DadosBruxo bruxo,
         String transformacao,
         String materia,
-        Cargo cargo,
-        DadosEndereco endereco
+        Cargo cargo
 ) {
 }

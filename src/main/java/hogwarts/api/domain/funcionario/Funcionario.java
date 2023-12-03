@@ -1,7 +1,6 @@
 package hogwarts.api.domain.funcionario;
 
 import hogwarts.api.domain.bruxo.Bruxo;
-import hogwarts.api.domain.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -24,12 +23,9 @@ public class Funcionario {
     private Bruxo bruxo;
     @Enumerated(EnumType.STRING)
     private Cargo cargo;
-    @Embedded
-    private Endereco endereco;
 
     public Funcionario(DadosCadastroFuncionario dados) {
         this.bruxo = new Bruxo(dados.bruxo());
-        this.endereco = new Endereco(dados.endereco());
         this.transformacao = dados.transformacao();
         this.materia = dados.materia();
         this.cargo = dados.cargo();
@@ -38,9 +34,6 @@ public class Funcionario {
     public void atualizarInformacoes(DadosAtualizacaoFuncionario dados) {
         if(dados.bruxo() != null){
             this.bruxo.atualizarInformacoes(dados.bruxo());
-        }
-        if(dados.endereco() != null){
-            this.endereco.atualizarInformacoes(dados.endereco());
         }
         if(dados.transformacao() != null){
             this.transformacao = dados.transformacao();

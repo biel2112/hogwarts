@@ -6,6 +6,7 @@ public enum Cargo {
     PROFESSORA,
     DIRETOR,
     ZELADOR,
+    GUARDACACA,
     INATIVO,
     INATIVA
 

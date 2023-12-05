@@ -1,5 +1,5 @@
 CREATE TABLE funcionarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
     sobrenome VARCHAR(100) NOT NULL,
     varinha VARCHAR(100) NOT NULL,
@@ -10,10 +10,12 @@ CREATE TABLE funcionarios (
     logradouro VARCHAR(100) NOT NULL,
     complemento VARCHAR(100),
     pais VARCHAR(20) NOT NULL,
-    cidade VARCHAR(100) NOT NULL
+    cidade VARCHAR(100) NOT NULL,
+    primary key (id)
 );
+
 CREATE TABLE alunos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
     sobrenome VARCHAR(100) NOT NULL,
     varinha VARCHAR(100) NOT NULL,
@@ -25,5 +27,6 @@ CREATE TABLE alunos (
     logradouro VARCHAR(100) NOT NULL,
     complemento VARCHAR(100),
     pais VARCHAR(20) NOT NULL,
-    cidade VARCHAR(100) NOT NULL
+    cidade VARCHAR(100) NOT NULL,
+    primary key (id)
 );

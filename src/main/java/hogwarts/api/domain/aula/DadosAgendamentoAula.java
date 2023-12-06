@@ -1,5 +1,6 @@
 package hogwarts.api.domain.aula;
 
+import hogwarts.api.domain.funcionario.Cargo;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 
@@ -12,7 +13,8 @@ public record DadosAgendamentoAula(
         Long idAluno,
 
         @NotNull
-        @Future LocalDateTime data
+        @Future
+        LocalDateTime data
 ){}
 
 

@@ -1,0 +1,1 @@
+alter table aulas add column motivo_cancelamento varchar(100);

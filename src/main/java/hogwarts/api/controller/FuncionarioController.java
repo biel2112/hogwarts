@@ -1,6 +1,5 @@
 package hogwarts.api.controller;
 
-import hogwarts.api.domain.aluno.DadosDetalhamentoAluno;
 import hogwarts.api.domain.funcionario.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,44 +16,39 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class FuncionarioController {
 
     @Autowired
-    private FuncionarioRepository repository;
+    private FuncionarioService service;
 
     @Transactional
     @PostMapping
     public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroFuncionario dados, UriComponentsBuilder uriBuilder){
-        var funcionario = new Funcionario(dados);
-        repository.save(funcionario);
-
+        var funcionario = service.cadastrar(dados);
         var uri = uriBuilder.path("/funcionarios/{id}").buildAndExpand(funcionario.getId()).toUri();
-
         return ResponseEntity.created(uri).body(new DadosDetalhamentoFuncionario(funcionario));
     }
 
     @GetMapping
     public ResponseEntity<Page<DadosListagemFuncionario>> listar(@PageableDefault(size = 2, sort = {"bruxo"}) Pageable paginacao){
-        var page =  repository.findAll(paginacao).map(DadosListagemFuncionario::new);
+        var page =  service.listar(paginacao);
         return ResponseEntity.ok(page);
     }
 
     @PutMapping
     @Transactional
     public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoFuncionario dados){
-        var funcionario = repository.getReferenceById(dados.id());
-        funcionario.atualizarInformacoes(dados);
-
+        var funcionario = service.atualizar(dados);
         return ResponseEntity.ok(new DadosDetalhamentoFuncionario(funcionario));
     }
 
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity excluir(@PathVariable Long id){
-        repository.deleteById(id);
+        service.excluir(id);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity pesquisar(@PathVariable Long id) {
-        var funcionario = repository.getReferenceById(id);
+        var funcionario = service.pesquisar(id);
         return ResponseEntity.ok(new DadosDetalhamentoFuncionario(funcionario));
     }
 }

@@ -4,6 +4,7 @@ import hogwarts.api.domain.aula.AgendamentoAula;
 import hogwarts.api.domain.aula.DadosAgendamentoAula;
 import hogwarts.api.domain.aula.DadosCancelamentoAula;
 import hogwarts.api.domain.aula.DadosDetalhamentoAula;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/aulas")
+@SecurityRequirement(name = "bearer-key")
 public class AulaController {
 
     @Autowired

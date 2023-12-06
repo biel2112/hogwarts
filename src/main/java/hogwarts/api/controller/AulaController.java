@@ -20,8 +20,8 @@ public class AulaController {
     @PostMapping
     @Transactional
     public ResponseEntity agendar(@RequestBody @Valid DadosAgendamentoAula dados){
-        agenda.agendar(dados);
-        return ResponseEntity.ok(new DadosDetalhamentoAula(null, null, null, null));
+        var dto = agenda.agendar(dados);
+        return ResponseEntity.ok(dto);
     }
 
     @DeleteMapping

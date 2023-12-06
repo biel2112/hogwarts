@@ -1,5 +1,6 @@
 package hogwarts.api.infra.exception;
 
+import hogwarts.api.domain.ValidacaoException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -19,6 +20,11 @@ public class TratadorErros {
     public ResponseEntity erro400(MethodArgumentNotValidException exception){
         var errors = exception.getFieldErrors();
         return ResponseEntity.badRequest().body(errors.stream().map(DadosErroValidacao::new));
+    }
+
+    @ExceptionHandler(ValidacaoException.class)
+    public ResponseEntity erroRegraDeNegocio(ValidacaoException exception){
+        return ResponseEntity.badRequest().body(exception.getMessage());
     }
 
     public record DadosErroValidacao(String campo, String msg){

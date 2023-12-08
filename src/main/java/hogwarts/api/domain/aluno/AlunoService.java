@@ -3,6 +3,7 @@ package hogwarts.api.domain.aluno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,6 +35,14 @@ public class AlunoService {
 
     public Aluno pesquisar(Long id){
         return alunoRepository.getReferenceById(id);
+    }
+
+    public void expulsarAluno(Long id) {
+        alunoRepository.expulsarAluno(id, Status.EXPULSO);
+    }
+
+    public boolean alunoExiste(Long id){
+        return alunoRepository.findById(id).isPresent();
     }
 
 }

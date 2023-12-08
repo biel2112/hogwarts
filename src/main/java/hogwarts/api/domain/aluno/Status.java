@@ -8,5 +8,7 @@ public enum Status {
     ALUNA,
     INATIVO,
     INATIVA,
+    EXPULSO,
+    EXPULSA
 
 }

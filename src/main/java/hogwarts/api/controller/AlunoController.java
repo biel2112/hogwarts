@@ -61,5 +61,17 @@ public class AlunoController {
         return ResponseEntity.ok(new DadosDetalhamentoAluno(aluno));
     }
 
+    @Transactional
+    @PutMapping("/{id}/expulsar")
+    public ResponseEntity<String> expulsarAluno(@PathVariable Long id) {
+        if(service.alunoExiste(id)){
+            service.expulsarAluno(id);
+            return ResponseEntity.ok("Aluno expulso");
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
 }

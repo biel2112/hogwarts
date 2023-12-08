@@ -2,14 +2,12 @@ package hogwarts.api.domain.aluno;
 
 import hogwarts.api.domain.bruxo.Bruxo;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Table(name = "alunos")
 @Entity(name = "Aluno")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
